@@ -3,9 +3,7 @@ import math
 import random
 import matplotlib.pyplot as plt
 
-# -----------------------------------------
-# Datos
-# -----------------------------------------
+
 coords = [(0,0), (1,5), (4,2), (6,6), (8,3), (3,7), (7,1)]
 n = len(coords)
 
@@ -17,9 +15,7 @@ for i in range(n):
         (x2,y2) = coords[j]
         dist[i][j] = math.hypot(x1-x2, y1-y2)
 
-# -----------------------------------------
-# Parámetros del ACO
-# -----------------------------------------
+
 num_hormigas = 20
 num_iter = 200
 alpha = 1.0
@@ -30,9 +26,7 @@ Q = 100
 pheromone = np.ones((n, n))
 
 
-# -----------------------------------------
-# Funciones auxiliares
-# -----------------------------------------
+
 def elegir_siguiente(actual, visitado):
     probs = []
     for j in range(n):
@@ -70,9 +64,7 @@ def longitud_ruta(ruta):
     return sum(dist[ruta[i]][ruta[i+1]] for i in range(len(ruta)-1))
 
 
-# -----------------------------------------
-# Algoritmo principal ACO
-# -----------------------------------------
+
 mejor_ruta = None
 mejor_distancia = float("inf")
 
@@ -104,9 +96,8 @@ for it in range(num_iter):
     if (it + 1) % 20 == 0:
         print(f"Iteración {it+1} → mejor distancia: {mejor_distancia:.3f}")
 
-# -----------------------------------------
-# Gráfico final de la mejor ruta
-# -----------------------------------------
+
+
 xs = [coords[i][0] for i in mejor_ruta]
 ys = [coords[i][1] for i in mejor_ruta]
 
